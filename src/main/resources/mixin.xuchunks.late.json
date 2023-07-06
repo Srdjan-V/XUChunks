@@ -1,0 +1,12 @@
+{
+  "minVersion": "0.8.3",
+  "package": "io.github.srdjanv.xuchunks.mixin",
+  "required": true,
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "FTBUtilitiesTeamDataMixin",
+    "GiuClaimedChunksMixin"
+  ],
+  "client": [],
+  "server": []
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "xuchunks",
+    "name": "XU Chunks",
+    "description": "",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": ["Srki_2K"],
+    "credits": "Authors of this project",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
