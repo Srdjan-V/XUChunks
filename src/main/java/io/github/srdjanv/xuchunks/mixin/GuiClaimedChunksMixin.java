@@ -11,14 +11,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 
 @Mixin(value = GuiClaimedChunks.class, remap = false)
-public abstract class GiuClaimedChunksMixin extends GuiChunkSelectorBase {
-    public GiuClaimedChunksMixin() {
+public abstract class GuiClaimedChunksMixin extends GuiChunkSelectorBase {
+    public GuiClaimedChunksMixin() {
         throw new AssertionError();
     }
 
     @Shadow
     private static int xUChunks$maxClaimedChunks;
-    @Shadow private static int xUChunks$maxLoadedChunks;
+    @Shadow
+    private static int xUChunks$maxLoadedChunks;
 
     @Inject(method = "addCornerText", at = @At(value = "TAIL"))
     private void inject$addCornerText(List<String> list, GuiChunkSelectorBase.Corner corner, CallbackInfo ci) {

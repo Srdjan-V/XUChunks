@@ -1,6 +1,7 @@
 package io.github.srdjanv.xuchunks;
 
 import com.feed_the_beast.ftblib.lib.data.ForgePlayer;
+import com.feed_the_beast.ftblib.lib.data.ForgeTeam;
 import com.mojang.authlib.GameProfile;
 import com.rwtema.extrautils2.power.Freq;
 import com.rwtema.extrautils2.power.PowerManager;
@@ -42,11 +43,17 @@ public final class Util {
         return freqList;
     }
 
-    public static int getFreq(List<ForgePlayer> players) {
-        for (ForgePlayer player : players) {
-            return getBasePlayerFreq(player);
+    @Nullable
+    public static Integer getFreq(ForgeTeam team) {
+        var owner = team.getOwner();
+        if (owner == null) {
+            if (team.getMembers().size() == 0) {
+                return null;
+            }
+            return getBasePlayerFreq(team.getMembers().get(0));
         }
-        throw new RuntimeException();
+
+        return getBasePlayerFreq(owner);
     }
 
     private static int getBasePlayerFreq(ForgePlayer player) {
@@ -76,7 +83,7 @@ public final class Util {
                 } while (PowerManager.instance.frequncies.containsKey(i));
 
                 xu2Tag.setInteger("Frequency", i);
-                player.setPlayerNBT(playerNbt);
+                //player.setPlayerNBT(playerNbt);
                 PowerManager.instance.frequncies.put(i, gameProfile);
                 PowerManager.instance.reassignValues();
                 return i;
